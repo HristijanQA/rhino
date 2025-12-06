@@ -1,5 +1,5 @@
 export const LOGIN_DATA = {
-  USERNAME: "",
-  PASSWORD: "",
-  PROTECTED_URL: "",
+  USERNAME: "devs",
+  PASSWORD: "Cd2020!",
+  PROTECTED_URL: "https://ls-staging.rhino-devs.com",
 };

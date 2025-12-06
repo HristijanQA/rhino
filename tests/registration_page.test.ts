@@ -56,14 +56,14 @@ test("Verify user can successfully create an account @regression @KAN-1", async 
   await expect(page).toHaveURL(/my-space/);
 });
 
-test("Verify user cannot create an account without entering password @KAN-3", async () => {
+test("Verify user cannot create an account without entering password @regression @KAN-3", async () => {
   await signupPage.getUniqueFiledsPage1();
   await signupPage.signupPage1(FIRST_NAME, LAST_NAME, SIGNUP_PASSWORD, COUNTRY);
 
   await signupPage.getUniqueFiledsPage2();
 });
 
-test("Verify that invalid days (30, 31) cannot be selected when February is the chosen month @KAN-9", async () => {
+test("Verify that invalid days (30, 31) cannot be selected when February is the chosen month @smoke @KAN-9", async () => {
   await signupPage.signupPage1(FIRST_NAME, LAST_NAME, SIGNUP_PASSWORD, COUNTRY);
 
   await signupPage.dropdownDay.click();
@@ -84,7 +84,7 @@ test("Verify that invalid days (30, 31) cannot be selected when February is the 
 
 // ...existing code...
 
-test("Country/Region selection persists when navigating back from screen 2 @KAN-8", async () => {
+test("Country/Region selection persists when navigating back from screen 2 @smoke @KAN-8", async () => {
   await signupPage.signupPage1(FIRST_NAME, LAST_NAME, SIGNUP_PASSWORD, COUNTRY);
 
   await expect(signupPage.dropdownDay).toBeVisible();

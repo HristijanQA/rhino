@@ -6,7 +6,8 @@
     "test": "npx playwright test",
     "postinstall": "npx playwright install chromium",
     "test:ci": "npm run test -- --project=chromium",
-    "test:regression": "npm run test:ci -- --grep @regression"
+    "test:regression": "npm run test:ci -- --grep @regression",
+    "test:scoped": "npm run test -- --project=chromium --grep-invert @focus"
   },
   "keywords": [],
   "author": "",
