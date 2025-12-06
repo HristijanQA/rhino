@@ -1,5 +1,5 @@
 export const LOGIN_DATA = {
-  USERNAME: "test",
+  USERNAME: "",
   PASSWORD: "",
   PROTECTED_URL: "",
 };

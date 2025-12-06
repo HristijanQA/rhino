@@ -88,3 +88,4 @@ Optional: npm script (package.json)
 
 Notes
 - Keep secrets out of source control; prefer CI secrets or local-only files.
+- Populate the Login: `test_data/logIn.data.ts` (USERNAME, PASSWORD, PROTECTED_URL) to be able to run the tests
