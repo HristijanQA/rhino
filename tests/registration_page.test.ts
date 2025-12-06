@@ -49,7 +49,7 @@ test.beforeEach("Setup browser, authenticate, and navigate", async () => {
   await expect(page).toHaveURL(/register/);
 });
 
-test("Verify user can successfully create an account @KAN-1", async () => {
+test("Verify user can successfully create an account @regression @KAN-1", async () => {
   await signupPage.signupPage1(FIRST_NAME, LAST_NAME, SIGNUP_PASSWORD, COUNTRY);
 
   await signupPage.signupPage2(DAY, MONTH, YEAR, GENDER, STREET, CITY, ZIP);

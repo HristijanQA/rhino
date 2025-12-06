@@ -2,7 +2,12 @@
   "name": "playwritets",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+"scripts": {
+    "test": "npx playwright test",
+    "postinstall": "npx playwright install chromium",
+    "test:ci": "npm run test -- --project=chromium",
+    "test:regression": "npm run test:ci -- --grep @regression"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
