@@ -7,9 +7,10 @@ import {
   BrowserContext,
   Page,
 } from "@playwright/test";
-import { SignupPage } from "../pages/SingIn.page.ts";
-import { LOGIN_DATA } from "../test_data/logIn.data.ts";
-import { USER_DATA } from "../test_data/user.data.ts";
+import { SignupPage } from "../pages/SignInPage.ts";
+import { LOGIN_DATA } from "../test_data/login_data.ts";
+import { USER_DATA } from "../test_data/user_data.ts";
+import { SignupPage2Locators } from "../objects/signup2.objects.ts";
 
 const USERNAME = LOGIN_DATA.USERNAME;
 const PASSWORD = LOGIN_DATA.PASSWORD;
@@ -19,6 +20,7 @@ let browser: Browser;
 let context: BrowserContext;
 let page: Page;
 let signupPage: SignupPage;
+let signupPage2: SignupPage2Locators;
 
 let FIRST_NAME = USER_DATA.FIRST_NAME;
 let LAST_NAME = USER_DATA.LAST_NAME;
@@ -43,6 +45,7 @@ test.beforeEach("Setup browser, authenticate, and navigate", async () => {
 
   page = await context.newPage();
   signupPage = new SignupPage(page);
+  signupPage2 = new SignupPage2Locators(page);
   await page.goto(BASE_URL);
 
   await page.getByRole("button", { name: "Sign up" }).click();
@@ -66,28 +69,26 @@ test("Verify user cannot create an account without entering password @regression
 test("Verify that invalid days (30, 31) cannot be selected when February is the chosen month @smoke @KAN-9", async () => {
   await signupPage.signupPage1(FIRST_NAME, LAST_NAME, SIGNUP_PASSWORD, COUNTRY);
 
-  await signupPage.dropdownDay.click();
+  await signupPage2.dropdownDay.click();
 
   await expect(signupPage.page.getByText("30", { exact: true })).toBeVisible();
   await expect(signupPage.page.getByText("31", { exact: true })).toBeVisible();
 
-  await signupPage.clickAwqy.click();
+  await signupPage2.clickAwqy.click();
 
-  await signupPage.dropdownMonth.click();
+  await signupPage2.dropdownMonth.click();
   await signupPage.page.getByRole("option", { name: "02" }).click();
 
-  await signupPage.dropdownDay.click();
+  await signupPage2.dropdownDay.click();
 
   await expect(signupPage.page.getByText("30", { exact: true })).toBeHidden();
   await expect(signupPage.page.getByText("31", { exact: true })).toBeHidden();
 });
 
-// ...existing code...
-
 test("Country/Region selection persists when navigating back from screen 2 @smoke @KAN-8", async () => {
   await signupPage.signupPage1(FIRST_NAME, LAST_NAME, SIGNUP_PASSWORD, COUNTRY);
 
-  await expect(signupPage.dropdownDay).toBeVisible();
+  await expect(signupPage2.dropdownDay).toBeVisible();
 
   const backBtn = page.locator(".icon-wrapper.modal-back > img");
   await backBtn.click();

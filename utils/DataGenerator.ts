@@ -7,8 +7,8 @@ export class DataGenerator {
      * @returns A unique email string.
      */
     static createUniqueEmail(prefix: string = 'test', domain: string = '@example.com'): string {
-        const randomPart = Math.random().toString(36).substring(2, 6); // 4 random chars
-        const timestampPart = Date.now().toString().slice(-6); // Last 6 digits of timestamp
+        const randomPart = Math.random().toString(36).substring(2, 6);
+        const timestampPart = Date.now().toString().slice(-6);
         
         return `${prefix}_${randomPart}_${timestampPart}${domain}`;
     }
