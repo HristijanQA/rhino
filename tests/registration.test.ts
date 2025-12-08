@@ -97,7 +97,7 @@ test("Country/Region selection persists when navigating back from screen 2 @smok
 
   await expect(
     countryLocator,
-    `FAILURE: Expected the selected country, to be visible after navigating back. Locator failed to find text.`
+    `FAILURE: Expected the selected country, to be visible after navigating back. Locator failed to find text.`,
   ).toBeVisible();
 
   console.log(`Assertion passed: Country is visible after navigating back.`);

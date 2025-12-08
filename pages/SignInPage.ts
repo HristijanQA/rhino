@@ -4,11 +4,11 @@ import { SignupPage1Locators } from "../objects/signup1.objects";
 import { SignupPage2Locators } from "../objects/signup2.objects";
 
 export class SignupPage {
+  private uniqueEmail: string;
+  private uniquePhoneNumber: string;
   readonly page: Page;
   readonly page1: SignupPage1Locators;
   readonly page2: SignupPage2Locators;
-  private uniqueEmail: string;
-  private uniquePhoneNumber: string;
 
   constructor(page: Page) {
     this.page = page;
@@ -23,7 +23,7 @@ export class SignupPage {
     firstName: string,
     lastName: string,
     password: string,
-    country: string = "Benin"
+    country: string = "Benin",
   ): Promise<string> {
     await expect(this.page1.headingSignup).toHaveText("Sign up");
     await this.page1.inputFirstName.fill(firstName);
@@ -45,7 +45,7 @@ export class SignupPage {
     gender: string,
     street: string,
     city: string,
-    zipCode: string
+    zipCode: string,
   ): Promise<string> {
     await this.page2.dropdownDay.click();
     await this.page.getByText(day).click();
